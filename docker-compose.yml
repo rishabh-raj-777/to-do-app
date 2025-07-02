@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    env_file:
+      - .env.docker
+
+  mongo:
+    image: mongo:6.0.13-jammy
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
