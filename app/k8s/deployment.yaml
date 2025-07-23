@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: todo-app
-          image: rishabhraj7/todo-app:latest  # Replace with your Docker image and tag if needed
+          image: rishabhraj7/todo-app:latest
           ports:
             - containerPort: 3000
           env:
             - name: MONGO_URI
-              value: mongodb://todo-mongo:27017/todoApp
+              value: mongodb://mongo:27017/todoApp
 ---
 apiVersion: v1
 kind: Service
@@ -34,4 +34,4 @@ spec:
     - protocol: TCP
       port: 27017
       targetPort: 27017
-  clusterIP: None  # Headless service for internal access
+  clusterIP: None

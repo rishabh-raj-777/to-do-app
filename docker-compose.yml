@@ -11,6 +11,8 @@ services:
       - mongo
     env_file:
       - .env.docker
+    networks:
+      - todo-net
 
   mongo:
     image: mongo:6.0.13-jammy
@@ -18,6 +20,12 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - todo-net
 
 volumes:
   mongo-data:
+
+networks:
+  todo-net:
+    driver: bridge
